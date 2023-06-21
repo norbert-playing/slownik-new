@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+ul li:nth-child(even){
+  background-color: cadetblue;
+}
