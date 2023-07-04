@@ -5,7 +5,6 @@ export interface Prop{
   names:Record[]
 }
 const Row = ({names}:Prop) => {
-  console.log(names);
   let x = 0
    
   return (

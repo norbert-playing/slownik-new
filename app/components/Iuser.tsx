@@ -11,7 +11,6 @@ import GetSesionProvider from "./SessionProvider";
 export const Profile = () => {
   const { data: session } = useSession()
   const user ={...session}
-  console.log('users:',user);
   return (
     <GetSesionProvider>
 

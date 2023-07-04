@@ -9,12 +9,12 @@ import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
-export async function createRecordAction(record:Record) {
-    const session =await getServerSession()
-    const userEmail = session?.user?.email
-    const userId =  await getUserId(userEmail!)
-    console.log('in server action!!! ', session, ' user id: ',userId);
-     await createRecords(record)
+export async function createRecordAction(record:Record,useremail:string) {
+    // const session =await getServerSession()
+    // const userEmail = session?.user?.email
+    const userId  =  await getUserId(useremail) as string
+    console.log('_action user id',useremail);
+     await createRecords(record,userId)
 }
 export async function deleteRecordAction() {
     await deleteRecords()
@@ -25,7 +25,7 @@ interface Iuser{
     image: string
 }
 
-async function getUserId(email:string|undefined) {
+export async function getUserId(email:string) {
   const user = await prisma.user.findUnique({
     where: {
       email: email,

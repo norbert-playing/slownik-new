@@ -4,14 +4,13 @@ import { prisma } from "./prizma";
 import { Session, getServerSession } from "next-auth";
 import { authoption } from "./authoptions";
 
-export async function getRecords(email:string) {
+export async function getRecords(id:string) {
   try {
     const records = await prisma.slownik.findMany({
       where: {
-        userId: email,
+        userId: id,
       },
     });
-    console.log(records);
     return { records };
   } catch (error) {
     return { error };
@@ -39,15 +38,16 @@ export async function createUser(user:User) {
   }
   
 }
-export async function createRecords({po_angielsku,po_polsku}: Record) {
+export async function createRecords({po_angielsku,po_polsku}: Record,userId:string) {
   try {
-    const session = await getServerSession(authoption)
-    console.log(session);
+    // const session = await getServerSession(authoption)
+    // console.log(session);
+    // console.log('create record() ',userId, ' -',po_angielsku);
     const records = await prisma.slownik.create({
       data: {
         po_angielsku,
         po_polsku,
-        
+        userId:userId
       },
     });
     console.log("inside createRecord-lib");
