@@ -9,7 +9,7 @@ import Button from "../components/Button";
 
 const Slownik = async () => {
   
-  const { records } = await getRecords();
+  const { records } = await getRecords('norbertelisty@gmail.com');
   return (
     <>
       <div className='md:text-2xl text-center italic mb-5'>

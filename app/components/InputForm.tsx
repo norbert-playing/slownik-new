@@ -1,19 +1,25 @@
 "use client";
 import { revalidatePath } from "next/cache";
-import { createRecordAction } from "../_action";
-import { useEffect, useRef, useState } from "react";
+import { createRecordAction} from "../_action";
+import { use, useEffect, useRef, useState } from "react";
 import { FiPlusSquare  } from "react-icons/fi";
 import { Record } from "../../lib/inteface";
 import Tabela from "./Tabela";
+import { useSession } from "next-auth/react";
+import { authoption } from "@/lib/authoptions";
 
-const AddSlowo = () => {
+
+const InputForm = () => {
+  
+  const session = useSession()
+ 
   const [lastWords, setLastWords] = useState<Record[]>([])
   const [object,setObject] = useState<Record>({po_angielsku:'',po_polsku:''})
   const formRef = useRef<HTMLFormElement>(null);
   useEffect(() => {
     setLastWords([...lastWords,object])
-  },[object])
-
+  },[object]);
+ 
 
   async function action(data: FormData) {
     const ang = data.get("AngWord")?.toString()!;
@@ -25,9 +31,14 @@ const AddSlowo = () => {
       po_angielsku: ang,
       po_polsku: pl,
     };
-    setObject(obj)
-    await createRecordAction(obj);
+  
+    
+    setObject(obj),
+    // await createRecordAction(obj)
+    console.log(session.status);
+    (session.status=="authenticated")?await createRecordAction(obj):console.log('you are no logged');
     formRef.current?.reset();
+    // console.log(session);
     // revalidatePath('/slownik')?????????????????????????????????????????????
   }
 
@@ -51,10 +62,9 @@ const AddSlowo = () => {
       <button  className='btn btn-primary mx-4 '>Zapisz słowo<FiPlusSquare /></button>
     </form>
     {(object.po_angielsku!='')?<Tabela name={[...lastWords]} />:''}
-    
 
     </>
   );
 };
 
-export default AddSlowo;
+export default InputForm;

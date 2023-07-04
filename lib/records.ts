@@ -1,9 +1,16 @@
+import { User } from "@prisma/client";
 import { Record } from "./inteface";
 import { prisma } from "./prizma";
+import { Session, getServerSession } from "next-auth";
+import { authoption } from "./authoptions";
 
-export async function getRecords() {
+export async function getRecords(email:string) {
   try {
-    const records = await prisma.slownik.findMany();
+    const records = await prisma.slownik.findMany({
+      where: {
+        userId: email,
+      },
+    });
     console.log(records);
     return { records };
   } catch (error) {
@@ -18,10 +25,30 @@ export async function deleteRecords() {
     return { error };
   }
 }
-export async function createRecords(record: Record) {
+export async function createUser(user:User) {
   try {
+    const logedUser = await prisma.user.create({
+      data:{
+        name: user?.name,
+        email:user?.email,
+        image:user?.email
+      }
+    })
+  } catch (error) {
+    return {error}
+  }
+  
+}
+export async function createRecords({po_angielsku,po_polsku}: Record) {
+  try {
+    const session = await getServerSession(authoption)
+    console.log(session);
     const records = await prisma.slownik.create({
-      data: record,
+      data: {
+        po_angielsku,
+        po_polsku,
+        
+      },
     });
     console.log("inside createRecord-lib");
     return { records };

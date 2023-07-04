@@ -1,8 +1,15 @@
-const Profile = () => {
+'use client'
+import { Profile} from "../components/Iuser";
+import GetSesionProvider from "../components/SessionProvider";
+
+const Profil = () => {
     return ( 
-        <p>twoj profil</p>
+        <GetSesionProvider>
+
+            <Profile/>
+        </GetSesionProvider>
      );
 }
  
-export default Profile;
+export default Profil;
 <p>twoj profil</p>
