@@ -1,9 +1,6 @@
 "use client";
 
-// import authOptions from "@/lib/option";
-import { Session } from "next-auth";
-import { getServerSession } from "next-auth/next";
-import { Iuser } from "@/lib/inteface";
+
 import { useSession } from "next-auth/react"
 import GetSesionProvider from "./SessionProvider";
 

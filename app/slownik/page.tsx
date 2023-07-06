@@ -15,7 +15,6 @@ const Slownik = async () => {
     const email = session.user?.email as string
     const userid =await getUserId(email) as string
     const { records } = await getRecords(userid);
-    console.log('records ze slo0wnika ',records);
     return (
     <>
       <div className='md:text-2xl text-center italic mb-5'>

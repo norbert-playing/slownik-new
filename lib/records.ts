@@ -40,9 +40,6 @@ export async function createUser(user:User) {
 }
 export async function createRecords({po_angielsku,po_polsku}: Record,userId:string) {
   try {
-    // const session = await getServerSession(authoption)
-    // console.log(session);
-    // console.log('create record() ',userId, ' -',po_angielsku);
     const records = await prisma.slownik.create({
       data: {
         po_angielsku,
