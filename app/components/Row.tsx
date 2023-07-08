@@ -1,21 +1,26 @@
 import { Record } from "@/lib/inteface";
 import { deleteOne, findRecords } from "@/lib/records";
+import { ButtonTabela } from "./Button";
+import { FC } from "react";
+import {v4 as uuid} from 'uuid';
+
 
 export interface Prop{
-  names:Record[]
+  names:Record[],
+  
 }
 const Row = ({names}:Prop) => {
   let x = 0
-   
   return (
-      names.map((el:Record) => {
+    names.map((el:Record) => {
+        const kang = el.po_angielsku
         return(
-          <tr key={el.id}>
+          <tr key={uuid()}>
             <th>{x++}</th>
             <td>{el.po_angielsku}</td>
             <td>{el.po_polsku}</td>
             <td>
-               <button  className='btn btn-info'>popraw</button>
+               <ButtonTabela kang={kang}/>
             </td>
           </tr>
         )

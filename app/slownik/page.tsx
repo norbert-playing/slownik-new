@@ -1,3 +1,4 @@
+
 import {
   createRecords,
   deleteRecords,
@@ -9,12 +10,16 @@ import Button from "../components/Button";
 import { getServerSession } from "next-auth";
 import { authoption } from "@/lib/authoptions";
 
+function update() {
+  console.log('record editable');
+}
 const Slownik = async () => {
   const session = await getServerSession(authoption)
   if(session){
     const email = session.user?.email as string
     const userid =await getUserId(email) as string
     const { records } = await getRecords(userid);
+
     return (
     <>
       <div className='md:text-2xl text-center italic mb-5'>

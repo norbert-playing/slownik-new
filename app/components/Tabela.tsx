@@ -1,11 +1,12 @@
 import { Record } from "@/lib/inteface";
 import Row from "./Row";
 import { FC } from "react";
+import {v4 as uuid} from 'uuid';
 
 export interface Prop{
   name:Record[]
 }
-const AddedWords:FC<Prop> = ({name}) => {
+const AddedWords = ({name}:Prop) => {
   const names = name
   return (
     <div className='overflow-x-auto'>
@@ -19,7 +20,7 @@ const AddedWords:FC<Prop> = ({name}) => {
           </tr>
         </thead>
         <tbody>
-          <Row  names = {names}/>
+          <Row key={uuid()} names = {names}/>
         </tbody>
       </table>
     </div>

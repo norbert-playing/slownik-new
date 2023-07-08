@@ -2,7 +2,7 @@
 'use server'
 
 import { Record } from "@/lib/inteface"
-import { createRecords, createUser, deleteRecords } from "@/lib/records"
+import { createRecords, createUser, deleteOne, deleteRecords } from "@/lib/records"
 import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
@@ -16,6 +16,10 @@ export async function createRecordAction(record:Record,useremail:string) {
 export async function deleteRecordAction() {
     await deleteRecords()
 }
+export async function deleteOneaction(arg:string) {
+  await deleteOne(arg)
+}
+
 interface Iuser{
     name: string,
     email: string,

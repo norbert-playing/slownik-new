@@ -27,6 +27,7 @@ const InputForm = () => {
     if (ang === "" || pl === "") {
       return;
     }
+  
     const obj = {
       po_angielsku: ang,
       po_polsku: pl,
@@ -52,19 +53,21 @@ const InputForm = () => {
   if (status === "authenticated") {
     return (
       <>
-        <form action={action} ref={formRef} className='flex flex-col py-10'>
+        <form action={action}  ref={formRef} className='flex flex-col py-10'>
           <h1 className='text-center'>Wpisz słowo po angielski i polsku</h1>
           <div className='flex md:flex-row mx-auto flex-col gap-3 justify-center mt-5 mb-5 '>
             <input
               type='text'
               placeholder='po angielsku'
               name='AngWord'
+              spellCheck = 'true'
               className='input input-bordered input-primary w-full max-w-xs'
             />
             <input
               type='text'
               placeholder='po polsku'
               name='PolWord'
+              spellCheck= 'true'
               className='input input-bordered input-accent w-full max-w-xs'
             />
           </div>
