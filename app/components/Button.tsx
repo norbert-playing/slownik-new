@@ -12,7 +12,7 @@ const Button = () => {
   return (
     <>
       <button className='btn btn-warning m-5' onClick={deletAll}>
-        Skasuj wszystkie slowa
+        Skasuj wszystkie słowa
       </button>
     </>
   );

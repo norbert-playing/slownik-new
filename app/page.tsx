@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 import DivforInput from "./components/DivforInput";
 
 export default async function Home() {

@@ -25,7 +25,7 @@ const Header = () => {
             </h1>
             <div className='container flex justify-between m-auto'>
               <Link href='/'>strona główna</Link>
-              <Link href='/slownik'>slownik</Link>
+              <Link href='/slownik'>słownik</Link>
             </div>
           </div>
           <div className="absolute top-0 right-0 h-16 w-16 ">

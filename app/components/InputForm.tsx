@@ -1,12 +1,10 @@
 "use client";
-import { revalidatePath } from "next/cache";
 import { createRecordAction } from "../_action";
-import { use, useEffect, useRef, useState } from "react";
+import {  useEffect, useRef, useState } from "react";
 import { FiPlusSquare } from "react-icons/fi";
 import { Record } from "../../lib/inteface";
 import Tabela from "./Tabela";
 import { useSession } from "next-auth/react";
-import { authoption } from "@/lib/authoptions";
 
 const InputForm = () => {
   const { data: session, status } = useSession();
@@ -71,7 +69,7 @@ const InputForm = () => {
               className='input input-bordered input-accent w-full max-w-xs'
             />
           </div>
-          <button className='btn btn-primary mx-4 '>
+          <button type="submit" className='btn btn-primary mx-4 '>
             Zapisz słowo
             <FiPlusSquare />
           </button>
