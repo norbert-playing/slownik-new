@@ -11,14 +11,16 @@ import { getServerSession } from "next-auth";
 import { authoption } from "@/lib/authoptions";
 import { Result } from "postcss";
 import Link from "next/link";
+import { ButtonVoice } from "../components/ButtonVoice";
+
 
 function update() {
   console.log('record editable');
 }
 let dzwiek:string;
-async function getTranslation() {
-  
-  const url:string = 'https://api.dictionaryapi.dev/api/v2/entries/en/gray';
+async function getTranslation(id:string = 'gray') {
+  'use server'
+  const url:string = `https://api.dictionaryapi.dev/api/v2/entries/en/${id}`;
   const options = {
     method: 'GET',
     // headers: {
@@ -32,7 +34,7 @@ async function getTranslation() {
     // const phonet = await result['phonetics']
     console.log(result[0].phonetics[1].audio);
     dzwiek = result[0].phonetics[1].audio as string
-    // return dzwiek
+    return dzwiek
   } catch (error) {
     console.error(error);
   }
@@ -53,15 +55,15 @@ const Slownik = async () => {
         wszystkie poznane słówka
       </div>
 
-      <ul className='max-w-4xl flex flex-col gap-3 mx-auto bg-gray-300 text-center  '>
+      <ul className=' max-w-4xl flex flex-col gap-3 mx-auto bg-gray-300 text-center justify-center '>
         {records?.map((record) => {
           return (
-            <li>{`${record.po_angielsku}  ➡️  ${record.po_polsku}      `}</li>
+            <li className="flex gap-3 items-center w-3/4   "><div className="flex w-1/2  "><ButtonVoice slowo={record.po_angielsku} translation={getTranslation}/></div><div className="flex text-center  w-full justify-center">{`${record.po_angielsku}  ➡️  ${record.po_polsku}      `}</div></li>
           );
         })}
       </ul>
       <Button />
-      <Link href={dzwiek}>dzwiek</Link>
+
     </>
   );
 };

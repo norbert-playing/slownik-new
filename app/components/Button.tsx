@@ -23,8 +23,8 @@ interface Kang{
 export const ButtonTabela:React.FC<Kang> = (props) => {
     const kang = props.kang
   return (
-    <div className="flex gap-2">
-      <button className='btn btn-info' >popraw</button>
+    <div className="flex gap-2 items-center">
+      {/* <button className='btn btn-info' >popraw</button> */}
       <button className='btn btn-info  bg-red-300 hover:bg-red-500' onClick={ () => {deleteOneLine(kang)}}>usuń</button>
     </div>
   );

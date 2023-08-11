@@ -13,17 +13,22 @@ const Row = ({names}:Prop) => {
   let x = 0
   return (
     names.map((el:Record) => {
-        const kang = el.po_angielsku
-        return(
-          <tr key={uuid()}>
-            <th>{x++}</th>
-            <td>{el.po_angielsku}</td>
-            <td>{el.po_polsku}</td>
-            <td>
-               <ButtonTabela kang={kang}/>
-            </td>
-          </tr>
-        )
+        const kang = el.po_angielsku;
+        if(x!=0){
+
+          return(
+            <tr key={uuid()}>
+              <th>{x++}</th>
+              <td>{el.po_angielsku}</td>
+              <td>{el.po_polsku}</td>
+              <td>
+                 <ButtonTabela kang={kang}/>
+              </td>
+            </tr>
+          )
+        }else{
+          x=1
+        }
       })
   
 
