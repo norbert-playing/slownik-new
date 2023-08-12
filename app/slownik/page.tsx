@@ -12,6 +12,7 @@ import { authoption } from "@/lib/authoptions";
 import { Result } from "postcss";
 import Link from "next/link";
 import { ButtonVoice } from "../components/ButtonVoice";
+import {v4 as uuid} from 'uuid';
 
 
 function update() {
@@ -58,7 +59,7 @@ const Slownik = async () => {
       <ul className=' max-w-4xl flex flex-col gap-3 mx-auto bg-gray-300 text-center justify-center '>
         {records?.map((record) => {
           return (
-            <li className="flex gap-3 items-center w-3/4   "><div className="flex w-1/2  "><ButtonVoice slowo={record.po_angielsku} translation={getTranslation}/></div><div className="flex text-center  w-full justify-center">{`${record.po_angielsku}  ➡️  ${record.po_polsku}      `}</div></li>
+            <li key={uuid()} className="flex gap-3 items-center w-3/4   "><div className="flex w-1/2  "><ButtonVoice slowo={record.po_angielsku} translation={getTranslation}/></div><div className="flex text-center  w-full justify-center">{`${record.po_angielsku}  ➡️  ${record.po_polsku}      `}</div></li>
           );
         })}
       </ul>
