@@ -74,7 +74,7 @@ const InputForm = () => {
             <FiPlusSquare />
           </button>
         </form>
-        {object.po_angielsku != "" ? <Tabela name={[...lastWords]} /> : ""}
+        {object.po_angielsku != "" ? <Tabela names={[...lastWords]} /> : ""}
       </>
     );
   }
@@ -102,7 +102,7 @@ const InputForm = () => {
             <FiPlusSquare />
           </button>
         </form>
-        {object.po_angielsku != "" ? <Tabela name={[...lastWords]} /> : ""}
+        {object.po_angielsku != "" ? <Tabela names={[...lastWords]} /> : ""}
       </>
   )
 };

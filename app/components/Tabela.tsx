@@ -1,13 +1,13 @@
 import { Record } from "@/lib/inteface";
-import Row from "./Row";
+import Row, { Prop } from "./Row";
 import { FC } from "react";
 import {v4 as uuid} from 'uuid';
 
-export interface Prop{
-  name:Record[]
-}
-const AddedWords = ({name}:Prop) => {
-  const names = name
+// export interface Prop{
+//   name:Record[]
+// }
+const AddedWords = ({names}:Prop) => {
+  // const names = names
   return (
     <div className='overflow-x-auto'>
       <table className='table'>
@@ -20,7 +20,7 @@ const AddedWords = ({name}:Prop) => {
           </tr>
         </thead>
         <tbody>
-          <Row key={uuid()} names = {names}/>
+          {Row ({names})}
         </tbody>
       </table>
     </div>

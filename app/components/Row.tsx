@@ -9,12 +9,11 @@ export interface Prop{
   names:Record[],
   
 }
-const Row = ({names}:Prop) => {
+const Row = ({names}:Prop):JSX.Element[] => {
   let x = 0
-  return (
-    names.map((el:Record) => {
+  return  names.map((el:Record) => {
         const kang = el.po_angielsku;
-        if(x!=0){
+       
 
           return(
             <tr key={uuid()}>
@@ -26,13 +25,11 @@ const Row = ({names}:Prop) => {
               </td>
             </tr>
           )
-        }else{
-          x=1
-        }
+     
       })
   
 
-      )
+      
     
     
   
